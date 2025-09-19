@@ -10,7 +10,7 @@ const log = createDebug(pluginInfos.id + ':init');
 const replaceNeedleInFile = (needle, replacement, files) => {
     files.forEach(file => {
         const content = readFileSync(join(process.cwd(), file), 'utf8');
-        writeFileSync(join(process.cwd(), file), content.replace(needle, replacement));
+        writeFileSync(join(process.cwd(), file), content.replaceAll(needle, replacement));
     });
 }
 
@@ -52,4 +52,4 @@ editFile('package.json');
 editFile('package-lock.json');
 
 // replace the plugin name
-replacePluginName('obsidian-sample-plugin', pluginInfos.id, ['src/main.ts', 'AGENTS.md', 'README.md', 'package.json', 'package-lock.json']);
+replacePluginName('sample-obsidian-plugin', pluginInfos.id, ['src/main.ts', 'AGENTS.md', 'README.md', 'package.json', 'package-lock.json']);
