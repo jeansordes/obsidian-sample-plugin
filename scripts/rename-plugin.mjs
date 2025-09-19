@@ -38,7 +38,7 @@ const editFile = (relativePath) => {
     const path = join(process.cwd(), relativePath);
 	const file = JSON.parse(readFileSync(path, 'utf8'));
     // if the file contains one of the following keys, replace the value with the manifest value
-    const keys = ['description', 'author', 'authorUrl', 'fundingUrl', 'isDesktopOnly'];
+    const keys = ['description', 'author', 'authorUrl', 'fundingUrl', 'isDesktopOnly', 'keywords'];
     keys.forEach(key => {
         if (file[key]) {
             file[key] = pluginInfos[key];

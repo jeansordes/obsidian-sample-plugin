@@ -39,10 +39,8 @@
     }
   },
   "keywords": [
-    "dendron",
-    "hierarchical",
-    "notes",
-    "knowledge-management"
+    "obsidian",
+    "obsidian-plugin"
   ],
   "author": "jeansordes",
   "license": "MIT",

@@ -7,5 +7,9 @@
 	"author": "jeansordes",
 	"authorUrl": "https://github.com/jeansordes",
 	"fundingUrl": "https://github.com/sponsors/jeansordes",
-	"isDesktopOnly": false
+	"isDesktopOnly": false,
+	"keywords": [
+		"obsidian",
+		"obsidian-plugin"
+	]
 }
