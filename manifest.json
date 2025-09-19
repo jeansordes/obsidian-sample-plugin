@@ -1,9 +1,9 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
+	"id": "obsidian-sample-plugin",
+	"name": "Obsidian Sample Plugin",
+	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
+	"description": "A sample plugin for Obsidian",
 	"author": "jeansordes",
 	"authorUrl": "https://github.com/jeansordes",
 	"fundingUrl": "https://github.com/sponsors/jeansordes",

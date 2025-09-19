@@ -78,14 +78,6 @@ npm run build
 - Keep `minAppVersion` accurate when using newer APIs.
 - Canonical requirements are coded here: https://github.com/obsidianmd/obsidian-releases/blob/master/.github/workflows/validate-plugin-entry.yml
 
-## Testing
-
-- Manual install for testing: copy `main.js`, `manifest.json`, `styles.css` (if any) to:
-  ```
-  <Vault>/.obsidian/plugins/<plugin-id>/
-  ```
-- Reload Obsidian and enable the plugin in **Settings → Community plugins**.
-
 ## Commands & settings
 
 - Any user-facing commands should be added via `this.addCommand(...)`.
@@ -95,10 +87,17 @@ npm run build
 
 ## Versioning & releases
 
-- Bump `version` in `manifest.json` (SemVer) and update `versions.json` to map plugin version → minimum app version.
-- Create a GitHub release whose tag exactly matches `manifest.json`'s `version`. Do not use a leading `v`.
-- Attach `manifest.json`, `main.js`, and `styles.css` (if present) to the release as individual assets.
-- After the initial release, follow the process to add/update your plugin in the community catalog as required.
+- Automated release process:
+  - Run `npm run release:<type>` to build the plugin, bump the version, generate the changelog, and create a GitHub release
+    - `npm run release:patch` to create a patch release
+    - `npm run release:minor` to create a minor release
+    - `npm run release:major` to create a major release
+    - `npm run release:beta` to create a beta release
+- Manual release process:
+  - Bump `version` in `manifest.json` (SemVer) and update `versions.json` to map plugin version → minimum app version.
+  - Create a GitHub release whose tag exactly matches `manifest.json`'s `version`. Do not use a leading `v`.
+  - Attach `manifest.json`, `main.js`, and `styles.css` (if present) to the release as individual assets.
+  - After the initial release, follow the process to add/update your plugin in the community catalog as required.
 
 ## Security, privacy, and compliance
 
@@ -164,11 +163,11 @@ Follow Obsidian's **Developer Policies** and **Plugin Guidelines**. In particula
 **main.ts** (minimal, lifecycle only):
 ```ts
 import { Plugin } from "obsidian";
-import { MySettings, DEFAULT_SETTINGS } from "./settings";
+import { ObsidianSamplePluginSettings, DEFAULT_SETTINGS } from "./settings";
 import { registerCommands } from "./commands";
 
-export default class MyPlugin extends Plugin {
-  settings: MySettings;
+export default class ObsidianSamplePlugin extends Plugin {
+  settings: ObsidianSamplePluginSettings;
 
   async onload() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -179,12 +178,12 @@ export default class MyPlugin extends Plugin {
 
 **settings.ts**:
 ```ts
-export interface MySettings {
+export interface ObsidianSamplePluginSettings {
   enabled: boolean;
   apiKey: string;
 }
 
-export const DEFAULT_SETTINGS: MySettings = {
+export const DEFAULT_SETTINGS: ObsidianSamplePluginSettings = {
   enabled: true,
   apiKey: "",
 };
@@ -193,7 +192,7 @@ export const DEFAULT_SETTINGS: MySettings = {
 **commands/index.ts**:
 ```ts
 import { Plugin } from "obsidian";
-import { doSomething } from "./my-command";
+import { doSomething } from "./obsidian-sample-plugin-command";
 
 export function registerCommands(plugin: Plugin) {
   plugin.addCommand({
@@ -217,8 +216,8 @@ this.addCommand({
 ### Persist settings
 
 ```ts
-interface MySettings { enabled: boolean }
-const DEFAULT_SETTINGS: MySettings = { enabled: true };
+interface ObsidianSamplePluginSettings { enabled: boolean }
+const DEFAULT_SETTINGS: ObsidianSamplePluginSettings = { enabled: true };
 
 async onload() {
   this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());

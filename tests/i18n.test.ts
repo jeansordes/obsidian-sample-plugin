@@ -39,12 +39,12 @@ describe('i18n', () => {
     describe('t (translate)', () => {
         it('should translate keys in English', () => {
             jest.spyOn(moment, 'locale').mockImplementation(() => 'en');
-            expect(t('pluginName')).toBe(en.pluginName);
+            expect(t('testKey')).toBe(en.testKey);
         });
 
         it('should translate keys in French', () => {
             jest.spyOn(moment, 'locale').mockImplementation(() => 'fr');
-            expect(t('pluginName')).toBe(fr.pluginName);
+            expect(t('testKey')).toBe(fr.testKey);
         });
 
         it('should fall back to English for missing translations', () => {
