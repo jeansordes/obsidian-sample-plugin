@@ -1,0 +1,115 @@
+/* Settings panel styles */
+
+/* Settings container */
+.plugin-settings {
+  padding: var(--spacing-lg);
+  max-width: 600px;
+}
+
+/* Settings section */
+.settings-section {
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 1px solid var(--obsidian-border-color, #ddd);
+  padding-bottom: var(--spacing-lg);
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Settings item */
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+  gap: var(--spacing-md);
+}
+
+.setting-item-info {
+  flex: 1;
+}
+
+.setting-item-name {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-normal);
+}
+
+.setting-item-description {
+  color: var(--text-muted);
+  font-size: calc(var(--font-size-base) * 0.9);
+  line-height: var(--line-height-base);
+}
+
+/* Settings controls */
+.setting-item-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Toggle switch */
+.setting-toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.setting-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background-modifier-border);
+  transition: 0.3s;
+  border-radius: var(--border-radius-lg);
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--text-muted);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--interactive-accent);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+  background-color: white;
+}
+
+/* Text input */
+.setting-text-input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  font-size: var(--font-size-base);
+  min-width: 200px;
+}
+
+.setting-text-input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.2);
+}

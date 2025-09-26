@@ -1,0 +1,49 @@
+/* Mobile-specific styles */
+
+/* Mobile breakpoints */
+@media (max-width: 768px) {
+  /* Adjust font sizes for mobile */
+  body {
+    font-size: calc(var(--font-size-base) * 0.9);
+  }
+
+  /* Stack elements vertically on mobile */
+  .plugin-container {
+    flex-direction: column;
+  }
+
+  /* Reduce padding on mobile */
+  .plugin-modal,
+  .plugin-settings {
+    padding: var(--spacing-sm);
+  }
+
+  /* Make buttons full width on mobile */
+  .plugin-button {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Adjust modal sizes for mobile */
+  .plugin-modal {
+    width: 95vw;
+    max-width: 95vw;
+    height: 90vh;
+    max-height: 90vh;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .plugin-modal {
+    width: 98vw;
+    max-width: 98vw;
+    height: 95vh;
+    max-height: 95vh;
+  }
+
+  /* Reduce spacing further */
+  .plugin-container {
+    gap: var(--spacing-xs);
+  }
+}
